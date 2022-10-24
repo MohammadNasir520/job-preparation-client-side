@@ -4,16 +4,16 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { ButtonGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { createUserWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
+import {  GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
 
-    const [error, setError]=useState('')
+    const [error, setError]=useState([])
 
 const googleProvider= new GoogleAuthProvider()
 
-const {googleSignIn ,createUserByEmailAndPassword }=useContext(AuthContext)
+const {googleSignIn , signInByEmailAndPassword }=useContext(AuthContext)
 
 
 // getting data from login from
@@ -23,6 +23,16 @@ const {googleSignIn ,createUserByEmailAndPassword }=useContext(AuthContext)
     const email = form.email.value;
     const password = form.password.value;
     // console.log(email, password);
+
+    signInByEmailAndPassword(email,password)
+    .then(result=>{
+        const user=result.user;
+        console.log(user);
+    })
+    .catch(error=>{
+        setError(error.message)
+        console.error(error.message);
+    })
   };
 
 
@@ -34,7 +44,7 @@ const handleGoogleSignIn=()=>{
         console.log(user);
     })
     .catch(error=>{
-        setError(error)
+        
         console.error(error)
     })
 };
@@ -64,7 +74,7 @@ const handleGoogleSignIn=()=>{
             type="password"
             placeholder="Password"
           />
-          <p className="text-danger">{error}</p>
+          <p className="text-danger">errror:{error}</p>
         </Form.Group>
         
 

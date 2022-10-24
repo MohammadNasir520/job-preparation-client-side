@@ -12,7 +12,22 @@ import "./NavBar.css";
 const NavBar = () => {
 
 
-const {user}=useContext(AuthContext)
+const {user, logOut}=useContext(AuthContext)
+
+
+const handleLogOut=()=>{
+  logOut()
+  .then(()=>{})
+  .catch(error=>{
+    console.log(error)
+  })
+}
+
+
+
+
+
+
 
 
   return (
@@ -32,13 +47,14 @@ const {user}=useContext(AuthContext)
             <NavLink className="nav-link " to="/">Courses</NavLink>
             <NavLink className="nav-link "  to="/">FAQ</NavLink>
             <NavLink className="nav-link " to="/">Blog</NavLink>
-            <NavLink  className="nav-link " to="login">Login</NavLink>
          
 
 
           </Nav>
           <Nav>
 
+            <NavLink  className="nav-link " to="login">Login</NavLink>
+            <NavLink  onClick={handleLogOut} className="nav-link " to="login">Logout</NavLink>
             <NavLink  className="nav-link " to="register">{user}</NavLink>
             <Button variant="dark">Dark / light</Button>
 
