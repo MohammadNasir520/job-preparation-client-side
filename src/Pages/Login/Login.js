@@ -99,7 +99,7 @@ const handleGoogleSignIn=()=>{
 <br />
       <Form.Text className="mx-auto fw-bold">
 
-      New to this Website? Please <Link to={'/register'}>Register</Link>
+      New to this Website? Please <Link className="text-light" to={'/register'}>Register</Link>
       </Form.Text>
     </div>
   );
