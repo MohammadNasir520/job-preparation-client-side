@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import CourseContainer from "../CourseContainer/CourseContainer";
 import CoursesDetails from "../CoursesDetails/CoursesDetails";
 import LeftSideNav from "../LeftSideNav/LeftSideNav";
+import "./Courses.css"
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -14,22 +16,30 @@ const Courses = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row ">
-        <div className="col-lg-4">
-          {
+    <div className="container  mt-4">
 
-            courses.map(course=>  <LeftSideNav 
-                 course={course}
-                 key={course.id}
-                 ></LeftSideNav>)
-          }
+        <div className="row">
 
-         
+    
+      <div className=" col-lg-4 ">
+       
+        <div className=" nav-container "  >
+            
+          <h6 className="text-center text-light"> Which Courses are available to us</h6>
+          {courses.map((course) => (
+            <LeftSideNav course={course} key={course.id}></LeftSideNav>
+          ))}
         </div>
-        <div className="col-lg-8">
-          <CoursesDetails></CoursesDetails>
+        
+
         </div>
+        <div className=" col-lg-8 ">
+        <div className=" course-container">
+          {courses.map((course) => (
+            <CourseContainer course={course} key={course.id}></CourseContainer>
+          ))}
+        </div>
+      </div>
       </div>
     </div>
   );

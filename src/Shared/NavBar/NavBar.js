@@ -32,7 +32,7 @@ const handleLogOut=()=>{
 
 
   return (
-    <Navbar bg="light"  expand="lg">
+    <Navbar bg="light"  expand="lg" sticky="top">
       <Container>
         <Image
           src={logo}

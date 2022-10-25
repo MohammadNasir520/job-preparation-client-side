@@ -1,0 +1,20 @@
+
+
+
+ 
+
+.nav-container{
+    
+    padding: 20px;
+    position: sticky;
+    top:40px;
+    background-color: darkblue;
+
+}
+
+.course-container{
+display: grid;
+grid-template-columns: repeat(2,1fr );
+gap: 10px;
+margin-top: 40px;
+}

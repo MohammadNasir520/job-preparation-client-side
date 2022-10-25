@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CoursesDetails = () => {
     return (
-        <div>
-            this is course details
-        </div>
+      
+       
+      <></>
     );
 };
 
