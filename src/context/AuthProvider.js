@@ -1,7 +1,8 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
     createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -12,8 +13,11 @@ export const AuthContext = createContext();
 
 const auth = getAuth(app);
 
-const AuthProvider = ({ children }) => {
 
+
+
+const AuthProvider = ({ children }) => {
+const [user, setUser]=useState(null)
 
 // sign in by google
   const googleSignIn = (Provider) => {
@@ -29,9 +33,23 @@ const AuthProvider = ({ children }) => {
   };
 
 //   sign in with email and password
-const signInByEmailAndPassword=(email,password)=>{
-    signInWithEmailAndPassword(auth, email, password)
+const   signInbyEmailAndPassword=(email,password)=>{
+   return signInWithEmailAndPassword(auth, email, password)
 }
+
+
+useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log(currentUser);
+      setUser(currentUser);
+      
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
 
 
 // logout handlar
@@ -42,8 +60,8 @@ const logOut=()=>{
 
 
 
-  const user = "batashali";
-  const authInfo = { user, googleSignIn, createUserByEmailAndPassword, signInByEmailAndPassword};
+  
+  const authInfo = { user, googleSignIn, createUserByEmailAndPassword,  signInbyEmailAndPassword,logOut};
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

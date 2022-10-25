@@ -9,31 +9,37 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
 
-    const [error, setError]=useState([])
+  const [error, setError]=useState([])
 
 const googleProvider= new GoogleAuthProvider()
 
-const {googleSignIn , signInByEmailAndPassword }=useContext(AuthContext)
+const {googleSignIn ,  signInbyEmailAndPassword }=useContext(AuthContext)
 
 
-// getting data from login from
-  const handleSubmit = (event) => {
+// get daata from form and sign in by email and password
+  const handleSubmit=(event)=>{
     event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    // console.log(email, password);
+    const form=event.target;
+    const email=form.email.value;
+    const password=form.password.value;
+    console.log( email, password, );
 
-    signInByEmailAndPassword(email,password)
+    signInbyEmailAndPassword(email, password)
     .then(result=>{
-        const user=result.user;
-        console.log(user);
+      const user= result.user;
+      console.log(user);
+      form.reset()
+      
+
     })
     .catch(error=>{
-        setError(error.message)
-        console.error(error.message);
+      console.error(error)
+      setError(error.message)
     })
-  };
+}
+
+
+
 
 
 //   google sign in function handle
@@ -44,7 +50,7 @@ const handleGoogleSignIn=()=>{
         console.log(user);
     })
     .catch(error=>{
-        
+      setError(error.message)
         console.error(error)
     })
 };
@@ -74,7 +80,7 @@ const handleGoogleSignIn=()=>{
             type="password"
             placeholder="Password"
           />
-          <p className="text-danger">errror:{error}</p>
+           <p className='text-danger'>{error}</p>
         </Form.Group>
         
 

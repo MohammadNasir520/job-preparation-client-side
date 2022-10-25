@@ -44,7 +44,7 @@ const handleLogOut=()=>{
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
             <NavLink className="nav-link " to="/">Home</NavLink>
-            <NavLink className="nav-link " to="/">Courses</NavLink>
+            <NavLink className="nav-link " to="/courses">Courses</NavLink>
             <NavLink className="nav-link "  to="/">FAQ</NavLink>
             <NavLink className="nav-link " to="/">Blog</NavLink>
          
@@ -53,10 +53,26 @@ const handleLogOut=()=>{
           </Nav>
           <Nav>
 
-            <NavLink  className="nav-link " to="login">Login</NavLink>
-            <NavLink  onClick={handleLogOut} className="nav-link " to="login">Logout</NavLink>
-            <NavLink  className="nav-link " to="register">{user}</NavLink>
-            <Button variant="dark">Dark / light</Button>
+          <Button variant="dark">Dark / light</Button>
+            {
+              user?.email?
+              
+              
+              <>
+              <NavLink  onClick={handleLogOut} className="nav-link " to="login">Logout</NavLink>
+              <Image
+              src={user?.photoURL}
+              style={{width: "40px" , height:"40px"}}
+              roundedCircle
+              title={user?.displayName}
+              className="mx-2"
+              ></Image>
+              {/* <NavLink  className="nav-link " to="register">{user?.displayName}</NavLink> */}
+              </>
+              :
+              <NavLink  className="nav-link " to="login">Login</NavLink>
+            }
+            
 
           </Nav>
 
