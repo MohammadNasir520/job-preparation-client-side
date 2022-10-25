@@ -16,7 +16,7 @@ const Courses = () => {
   }, []);
 
   return (
-    <div className="container  mt-2 courses">
+    <div className="container  mt-1 courses">
 
         <div className="row">
 
