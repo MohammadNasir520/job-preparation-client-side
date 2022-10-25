@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CourseContainer from "../CourseContainer/CourseContainer";
-import CoursesDetails from "../CoursesDetails/CoursesDetails";
+
 import LeftSideNav from "../LeftSideNav/LeftSideNav";
 import "./Courses.css"
 
@@ -16,7 +16,7 @@ const Courses = () => {
   }, []);
 
   return (
-    <div className="container  mt-4">
+    <div className="container  mt-2 courses">
 
         <div className="row">
 
