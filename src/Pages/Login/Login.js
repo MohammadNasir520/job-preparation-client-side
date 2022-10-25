@@ -6,6 +6,7 @@ import { ButtonGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {  GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../context/AuthProvider";
+import "./Login.css"
 
 const Login = () => {
 
@@ -29,7 +30,7 @@ const {googleSignIn ,  signInbyEmailAndPassword }=useContext(AuthContext)
       const user= result.user;
       console.log(user);
       form.reset()
-      
+      setError('')
 
     })
     .catch(error=>{
@@ -66,7 +67,7 @@ const handleGoogleSignIn=()=>{
 
 
   return (
-    <div className="w-50 mx-auto ">
+    <div className="login-container w-25 mx-auto  container  mt-5 p-5 rounded">
       <Form onSubmit={handleSubmit} >
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -84,20 +85,21 @@ const handleGoogleSignIn=()=>{
         </Form.Group>
         
 
-        <Button variant="primary" type="submit">
+        <Button className="btn-login  w-100" variant="primary" type="submit">
           Login
         </Button>
       </Form>
 
-      <ButtonGroup  className="mt-4" vertical>
-      <Button onClick={handleGoogleSignIn} className="mb-2"  variant="outline-primary"><FaGoogle></FaGoogle>  Login With Google</Button>
-      <Button  variant="outline-dark"><FaGithub></FaGithub>  Login With GitHub</Button>
-      </ButtonGroup>
+      <div className="mt-4 w-100" >
+      <Button onClick={handleGoogleSignIn} className="mb-2 w-100"  variant="outline-light"><FaGoogle></FaGoogle>  Login With Google</Button>
+      <Button className=" w-100"  variant="outline-light"><FaGithub></FaGithub>  Login With GitHub</Button>
+      </div>
 
     
 <br />
-      <Form.Text id="passwordHelpBlock" muted>
-       New to this Website? Please <Link to={'/register'}>Register</Link>
+      <Form.Text className="mx-auto fw-bold">
+
+      New to this Website? Please <Link to={'/register'}>Register</Link>
       </Form.Text>
     </div>
   );

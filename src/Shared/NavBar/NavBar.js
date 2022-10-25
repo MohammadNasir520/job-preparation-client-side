@@ -3,6 +3,7 @@ import { Button, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { FaUserAlt } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
@@ -60,6 +61,8 @@ const handleLogOut=()=>{
               
               <>
               <NavLink  onClick={handleLogOut} className="nav-link " to="login">Logout</NavLink>
+              {user?.photoURL?
+              
               <Image
               src={user?.photoURL}
               style={{width: "40px" , height:"40px"}}
@@ -67,6 +70,13 @@ const handleLogOut=()=>{
               title={user?.displayName}
               className="mx-2"
               ></Image>
+              :
+              <FaUserAlt className="mt-3"></FaUserAlt>
+
+
+              }
+
+
               {/* <NavLink  className="nav-link " to="register">{user?.displayName}</NavLink> */}
               </>
               :
