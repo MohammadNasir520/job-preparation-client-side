@@ -37,7 +37,7 @@ console.log(course)
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{promotion}</p>
-          <Link to={``} className="btn btn-primary w-100">Get Premium Access for {title} course</Link>
+          <Link to="/checkout" className="btn btn-primary w-100">Get Premium Access for {title} course</Link>
         </div>
       </div>
        

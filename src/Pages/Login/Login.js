@@ -2,8 +2,7 @@ import React, { useContext, useState } from "react";
 import {FaGithub, FaGoogle, FaRegSun} from "react-icons/fa";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { ButtonGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {  GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../context/AuthProvider";
 import "./Login.css"
@@ -11,6 +10,12 @@ import "./Login.css"
 const Login = () => {
 
   const [error, setError]=useState([])
+
+
+const navigates=useNavigate()
+const location = useLocation();
+const froms= location.state?.from?.pathname || "/"
+console.log(froms)
 
 const googleProvider= new GoogleAuthProvider()
 
@@ -29,8 +34,10 @@ const {googleSignIn ,  signInbyEmailAndPassword }=useContext(AuthContext)
     .then(result=>{
       const user= result.user;
       console.log(user);
-      form.reset()
-      setError('')
+      form.reset();
+      setError('');
+
+     navigates(froms , {replace:true})
 
     })
     .catch(error=>{
@@ -49,6 +56,8 @@ const handleGoogleSignIn=()=>{
     .then(result=>{
         const user=result.user;
         console.log(user);
+
+        navigates(froms , {replace:true})
     })
     .catch(error=>{
       setError(error.message)

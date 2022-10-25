@@ -17,10 +17,14 @@ const auth = getAuth(app);
 
 
 const AuthProvider = ({ children }) => {
-const [user, setUser]=useState(null)
+const [user, setUser]=useState(null);
+const [loading, setLoading] = useState(true);
+
+
 
 // sign in by google
   const googleSignIn = (Provider) => {
+    setLoading(true)
     return signInWithPopup(auth, Provider);
   };
 
@@ -28,12 +32,13 @@ const [user, setUser]=useState(null)
 
 //   create email by email and password
   const createUserByEmailAndPassword = (email, password) => {
-   
+   setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
 //   sign in with email and password
 const   signInbyEmailAndPassword=(email,password)=>{
+  setLoading(true)
    return signInWithEmailAndPassword(auth, email, password)
 }
 
@@ -42,7 +47,7 @@ useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
       setUser(currentUser);
-      
+      setLoading(false)
     });
 
     return () => {
@@ -54,6 +59,7 @@ useEffect(() => {
 
 // logout handlar
 const logOut=()=>{
+  setLoading(true)
     return signOut(auth)
 }
 
@@ -61,7 +67,7 @@ const logOut=()=>{
 
 
   
-  const authInfo = { user, googleSignIn, createUserByEmailAndPassword,  signInbyEmailAndPassword,logOut};
+  const authInfo = { user, loading, googleSignIn, createUserByEmailAndPassword,  signInbyEmailAndPassword,logOut};
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
