@@ -1,12 +1,12 @@
 .courses{
-    background-color: rgb(168, 187, 223);
+    background-color: rgb(205, 215, 235);
 }
 .nav-container{
     
     padding: 20px;
     position: sticky;
     top:40px;
-    background-color: darkblue;
+    background-color: rgb(20, 20, 73);
 
 }
 

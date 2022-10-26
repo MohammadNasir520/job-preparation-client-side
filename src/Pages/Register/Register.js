@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import "./Register.css"
 
 const Register = () => {
   const [error, setError]=useState([])
-
+const navigate = useNavigate();
     const {createUserByEmailAndPassword}=useContext(AuthContext);
 
     const handleSubmit=(event)=>{
@@ -22,6 +22,8 @@ const Register = () => {
         .then(result=>{
             const user=result.user;
             console.log(user)
+            navigate('/')
+
           })
           .catch(error=>{
             console.error(error)
@@ -61,7 +63,7 @@ const Register = () => {
 
         <Button className='w-100' variant="primary" type="submit" >
           
-          Submit
+         Register
         </Button>
         <br />
         <Form.Text className="mx-auto fw-bold text-center">

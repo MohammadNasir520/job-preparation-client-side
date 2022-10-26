@@ -1,38 +1,37 @@
-import React, { useContext } from "react";
-import { Button, Image } from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { FaUserAlt } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 import logo from "../../images/job preparation logo.png";
 import "./NavBar.css";
 
 const NavBar = () => {
+  const [buttonToggle, setToggle] = useState(false);
 
+  const [buttonText , setButtonText]=useState('Make dark')
 
-const {user, logOut}=useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
 
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-const handleLogOut=()=>{
-  logOut()
-  .then(()=>{})
-  .catch(error=>{
-    console.log(error)
-  })
-}
-
-
-
-
-
-
-
+  const handleToggle = () => {
+    buttonToggle ?<> {setToggle(false) } {setButtonText('Make Dark')}</> : <>{setToggle(true)} {setButtonText("Make Light")}</>;
+    console.log(buttonToggle);
+  };
 
   return (
-    <Navbar className="navbar" bg="light"  expand="lg" sticky="top">
+    <Navbar className="navbar" bg="" expand="lg" sticky="top">
       <Container>
         <Image
           src={logo}
@@ -40,63 +39,50 @@ const handleLogOut=()=>{
           roundedCircle
           className="nav-logo me-2"
         ></Image>
-        <Navbar.Brand className="nav-link " to="home">Job Preparation</Navbar.Brand>
+        <Navbar.Brand to="home"><span className="text-light fw-bold">Job Preparation</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mx-auto">
-            <NavLink className="nav-link " to="/">Home</NavLink>
-            <NavLink className="nav-link " to="/courses">Courses</NavLink>
-            <NavLink className="nav-link "  to="/">FAQ</NavLink>
-            <NavLink className="nav-link " to="/blogs">Blogs</NavLink>
-         
+          <Nav className="mx-auto d-flex">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/courses">Courses</NavLink>
+            <NavLink to="/">FAQ</NavLink>
+            <NavLink to="/blogs">Blogs</NavLink>
 
-
-          </Nav>
-          <Nav>
-
-          <Button variant="dark">Dark / light</Button>
-            {
-              user?.email?
-              
-              
+            <div
+              className={` toggle-btn ${buttonToggle ? "dark" : "light"}`}
+              onClick={handleToggle}
+            >
+              {buttonText}
+            </div>
+            {user?.email ? (
               <>
-              <NavLink  onClick={handleLogOut} className="nav-link " to="login">Logout</NavLink>
-              {user?.photoURL?
-              
-              <Image
-              src={user?.photoURL}
-              style={{width: "40px" , height:"40px"}}
-              roundedCircle
-              title={user?.displayName}
-              className="mx-2"
-              ></Image>
-              :
-              <FaUserAlt className="mt-3"></FaUserAlt>
+                <NavLink onClick={handleLogOut} to="login">
+                  Logout
+                </NavLink>
+                {user?.photoURL ? (
+                  <Image
+                    src={user?.photoURL}
+                    style={{ width: "40px", height: "40px" }}
+                    roundedCircle
+                    title={user?.displayName}
+                    className="mx-2"
+                  ></Image>
+                ) : (
+                  <FaUserAlt className="mt-3"></FaUserAlt>
+                )}
 
-
-              }
-
-
-              {/* <NavLink  className="nav-link " to="register">{user?.displayName}</NavLink> */}
+                {/* <NavLink  to="register">{user?.displayName}</NavLink> */}
               </>
-              :
-                <>
-                              <NavLink  className="nav-link " to="/login">Login</NavLink>
-                              <NavLink  className="nav-link " to="/register">Register</NavLink>
-                              
-
-                </>
-               }
-            
-
+            ) : (
+              <>
+                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/register">Register</NavLink>
+              </>
+            )}
           </Nav>
-
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
-
-
   );
 };
 

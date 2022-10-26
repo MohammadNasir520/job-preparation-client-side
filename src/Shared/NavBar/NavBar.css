@@ -1,7 +1,24 @@
+
 .navbar{
- 
-    
+    background-color: rgb(110, 110, 238);
 }
-.navbar a {
-   
+.dark{
+ 
+    background-color: black;
+    color: white;
+}
+.light {
+   background-color: azure;
+   color: black;
+}
+.toggle-btn{
+    border-radius: 10px;
+    padding: 0 10px;
+}
+.navbar a { 
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 20px;
+    
 }
