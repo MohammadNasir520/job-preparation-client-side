@@ -62,7 +62,7 @@ const NavBar = () => {
                 {user?.photoURL ? (
                   <Image
                     src={user?.photoURL}
-                    style={{ width: "40px", height: "40px" }}
+                    style={{ width: "30px", height: "30px" }}
                     roundedCircle
                     title={user?.displayName}
                     className="mx-2"
