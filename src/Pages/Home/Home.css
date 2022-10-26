@@ -1,0 +1,28 @@
+.carusel-container{
+    height:  80vh;
+    margin: 50px 0;
+}
+.carusel-container img{
+    height: 75vh;
+object-fit: cover;
+filter: brightness(50%)
+}
+
+
+@media screen and (max-width: 768px) {
+    .carusel-container{
+        height:  200px;
+        margin: 20px 0;
+    }
+    .carusel-container img{
+        height: 200px;
+    object-fit: cover;
+    }
+    .carusel-container h3 {
+        font-size: 1rem;
+    }
+    .carusel-container p {
+        font-size: 1rem;
+    }
+    
+}

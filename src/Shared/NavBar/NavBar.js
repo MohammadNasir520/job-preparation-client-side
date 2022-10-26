@@ -43,7 +43,7 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto d-flex">
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/home">Home</NavLink>
             <NavLink to="/courses">Courses</NavLink>
             <NavLink to="/">FAQ</NavLink>
             <NavLink to="/blogs">Blogs</NavLink>

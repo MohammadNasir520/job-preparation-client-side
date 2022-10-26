@@ -22,6 +22,11 @@ export const router=createBrowserRouter([
                 element:<Home></Home>
             },
             {
+                path: '/home',
+                loader: ()=> fetch(`https://assignment-10-server-side-ebon.vercel.app/courses`),
+                element:<Home></Home>
+            },
+            {
                 path: '/login',
                 element:<Login></Login>
             },
