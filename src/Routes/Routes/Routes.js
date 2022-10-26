@@ -33,12 +33,12 @@ export const router=createBrowserRouter([
             },
             {
                 path: '/courses/:id',
-                loader: ({params})=> fetch(`http://localhost:5000/courses/${params.id}`),
+                loader: ({params})=> fetch(`https://assignment-10-server-side-ebon.vercel.app/courses/${params.id}`),
                 element:<CoursesDetails></CoursesDetails>
             },
             {
                 path:'/checkout/:id',
-                loader: ({params})=> fetch(`http://localhost:5000/courses/${params.id}`),
+                loader: ({params})=> fetch(`https://assignment-10-server-side-ebon.vercel.app/courses/${params.id}`),
                 element:<PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             }
         ]

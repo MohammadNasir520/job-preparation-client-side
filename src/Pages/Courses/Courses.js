@@ -10,7 +10,7 @@ const Courses = () => {
   console.log(courses);
 
   useEffect(() => {
-    fetch("http://localhost:5000/courses")
+    fetch("https://assignment-10-server-side-ebon.vercel.app/courses")
       .then((res) => res.json())
       .then((data) => setCourses(data));
   }, []);
