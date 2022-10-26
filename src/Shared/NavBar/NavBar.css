@@ -22,3 +22,7 @@
     margin: 0 20px;
     
 }
+.navbar a:hover{
+  
+    color: burlywood;
+}

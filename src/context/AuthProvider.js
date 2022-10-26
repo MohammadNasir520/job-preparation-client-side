@@ -1,11 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
-    createUserWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../Firebase/Firebase.config";
 
@@ -13,48 +14,39 @@ export const AuthContext = createContext();
 
 const auth = getAuth(app);
 
-
-
-
 const AuthProvider = ({ children }) => {
-const [user, setUser]=useState(null);
-const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-
-
-// sign in by google
+  // sign in by google
   const googleSignIn = (Provider) => {
-    setLoading(true)
+    setLoading(true);
     return signInWithPopup(auth, Provider);
   };
 
-
-
-//   create email by email and password
+  //   create email by email and password
   const createUserByEmailAndPassword = (email, password) => {
-   setLoading(true)
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-//   sign in with email and password
-const   signInbyEmailAndPassword=(email,password)=>{
-  setLoading(true)
-   return signInWithEmailAndPassword(auth, email, password)
-}
+  //   sign in with email and password
+  const signInbyEmailAndPassword = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
+  // sign in by guthub function
+  const signInbyGithub = (Provider) => {
+    setLoading(true);
+    return signInWithPopup(auth, Provider);
+  };
 
-// sign in by guthub function
-const signInbyGithub=(Provider) => {
-  setLoading(true)
-  return signInWithPopup(auth, Provider);
-}
-
-
-useEffect(() => {
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
       setUser(currentUser);
-      setLoading(false)
+      setLoading(false);
     });
 
     return () => {
@@ -62,19 +54,34 @@ useEffect(() => {
     };
   }, []);
 
+// set user name and photo  function , collecting from register page
 
-
-// logout handlar
-const logOut=()=>{
-  setLoading(true)
-    return signOut(auth)
+const setNameAndPhot=(profile)=>{
+  return updateProfile(auth.currentUser, profile)
 }
 
 
 
 
-  
-  const authInfo = { user, loading, googleSignIn, createUserByEmailAndPassword,  signInbyEmailAndPassword, signInbyGithub,logOut};
+  // logout handlar
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+
+
+  // set context value
+
+  const authInfo = {
+    user,
+    loading,
+    googleSignIn,
+    createUserByEmailAndPassword,
+    signInbyEmailAndPassword,
+    signInbyGithub,
+    setNameAndPhot,
+    logOut,
+  };
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

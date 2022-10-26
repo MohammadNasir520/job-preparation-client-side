@@ -68,7 +68,7 @@ const NavBar = () => {
                     className="mx-2"
                   ></Image>
                 ) : (
-                  <FaUserAlt className="mt-3"></FaUserAlt>
+                  <FaUserAlt className="text-light fw-bold mt-1 ms-4"></FaUserAlt>
                 )}
 
                 {/* <NavLink  to="register">{user?.displayName}</NavLink> */}

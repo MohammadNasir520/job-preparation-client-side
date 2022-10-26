@@ -8,7 +8,7 @@ import "./Register.css"
 const Register = () => {
   const [error, setError]=useState([])
 const navigate = useNavigate();
-    const {createUserByEmailAndPassword}=useContext(AuthContext);
+    const {createUserByEmailAndPassword ,setNameAndPhot}=useContext(AuthContext);
 
     const handleSubmit=(event)=>{
         event.preventDefault();
@@ -17,11 +17,12 @@ const navigate = useNavigate();
         const photoURL = form.photoURL.value;
         const email=form.email.value;
         const password=form.password.value;
-        console.log(name, email ,password, photoURL );
+       
         createUserByEmailAndPassword(email, password)
         .then(result=>{
             const user=result.user;
             console.log(user)
+            handleSetNameAndPhoto(name, photoURL );
             navigate('/')
 
           })
@@ -31,6 +32,15 @@ const navigate = useNavigate();
         })
         
     }
+
+
+  const handleSetNameAndPhoto=(name, photoURL)=>{
+    const profile={
+      displayName: name,
+      photoURL: photoURL
+    }
+    setNameAndPhot(profile)
+  }
 
 
     return (
