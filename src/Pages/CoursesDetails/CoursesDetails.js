@@ -2,25 +2,41 @@ import React from "react";
 import { FaDownload } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
 
 const CoursesDetails = () => {
   const course = useLoaderData();
-  const { title, description, image, exam, rating, totalClass, promotion ,id} =
+  const { title, description, image, exam, rating, totalClass, promotion, id } =
     course;
   console.log(course);
 
   return (
     <div className="container mt-1">
+      
+
       <header>
-        <h2 className="text-center ">
+      <Pdf targetRef={ref} filename={title}>
+          {({ toPdf }) => (
+
+            <button className="btn btn-primary" onClick={toPdf}>
+              <p className="fs-5 mb-1">
+                Download course Modules 
+                <FaDownload className="ms-1"></FaDownload>
+              </p>
+            </button>
+
+          )}
+        </Pdf>
+        <h2 className="text-center " ref={ref}>
           {" "}
           Details about <span className="text-info">{title}</span> course{" "}
         </h2>
-        <p className="fs-5 mb-1">
-            Download PDF 
-          <FaDownload ></FaDownload>
-        </p>
-        <p>Course Description: {description}</p>
+
+      
+
+        <p >Course Description: {description}</p>
       </header>
 
       <section>
@@ -35,8 +51,8 @@ const CoursesDetails = () => {
                   alt="..."
                 />
               </div>
-              <div className="w-75 p-4">
-                <h3 className="text-center ">Course Details </h3>
+              <div ref={ref} className="w-75 p-4">
+                <h3 className="text-center "> {title}Course Modules </h3>
                 <h4>Total Class: {totalClass} </h4>
                 <h4>Total Quiz: {exam}</h4>
                 <h4>Total Student: {rating.count}</h4>

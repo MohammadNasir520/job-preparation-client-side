@@ -66,7 +66,7 @@ const Register = () => {
         <br />
         <Form.Text className="mx-auto fw-bold text-center">
 
-        Already have an account? Go to  <Link className="text-light " to={'/login'}>Login</Link>
+        Already have an account? Go to  <Link className="text-light text-decoration-none " to={'/login'}>Login</Link>
         </Form.Text>
 
 
