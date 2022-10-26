@@ -43,6 +43,13 @@ const   signInbyEmailAndPassword=(email,password)=>{
 }
 
 
+// sign in by guthub function
+const signInbyGithub=(Provider) => {
+  setLoading(true)
+  return signInWithPopup(auth, Provider);
+}
+
+
 useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
@@ -67,7 +74,7 @@ const logOut=()=>{
 
 
   
-  const authInfo = { user, loading, googleSignIn, createUserByEmailAndPassword,  signInbyEmailAndPassword,logOut};
+  const authInfo = { user, loading, googleSignIn, createUserByEmailAndPassword,  signInbyEmailAndPassword, signInbyGithub,logOut};
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

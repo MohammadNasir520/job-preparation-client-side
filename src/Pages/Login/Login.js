@@ -3,7 +3,7 @@ import {FaGithub, FaGoogle, FaRegSun} from "react-icons/fa";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {  GoogleAuthProvider } from "firebase/auth";
+import {  GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../context/AuthProvider";
 import "./Login.css"
 
@@ -17,9 +17,11 @@ const location = useLocation();
 const froms= location.state?.from?.pathname || "/"
 console.log(froms)
 
-const googleProvider= new GoogleAuthProvider()
+const googleProvider= new GoogleAuthProvider();
 
-const {googleSignIn ,  signInbyEmailAndPassword }=useContext(AuthContext)
+const gitHubProvider =new GithubAuthProvider();
+
+const {googleSignIn ,  signInbyEmailAndPassword, signInbyGithub}=useContext(AuthContext)
 
 
 // get daata from form and sign in by email and password
@@ -66,6 +68,25 @@ const handleGoogleSignIn=()=>{
 };
 
 
+
+
+// github signIn handlar
+
+const handleGitHubSignIn=()=>{
+  googleSignIn(gitHubProvider)
+  .then(result=>{
+      const user=result.user;
+      console.log(user);
+
+      navigates(froms , {replace:true})
+  })
+  .catch(error=>{
+    setError(error.message)
+      console.error(error)
+  })
+
+}
+
   return (
 
     <div className="login-container mx-auto rounded">
@@ -94,7 +115,7 @@ const handleGoogleSignIn=()=>{
 
       <div className="mt-4 w-100" >
       <Button onClick={handleGoogleSignIn} className="mb-2 w-100"  variant="outline-light"><FaGoogle></FaGoogle>  Login With Google</Button>
-      <Button className=" w-100"  variant="outline-light"><FaGithub></FaGithub>  Login With GitHub</Button>
+      <Button  onClick={handleGitHubSignIn} className=" w-100"  variant="outline-light"><FaGithub></FaGithub>  Login With GitHub</Button>
       </div>
 
     
