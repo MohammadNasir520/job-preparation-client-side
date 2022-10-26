@@ -3,3 +3,9 @@
         color: white;
         width: 35%;
     }
+    @media screen and (max-width: 768px) {
+        .register-container{
+            width: 100%;
+       
+        }
+    }
