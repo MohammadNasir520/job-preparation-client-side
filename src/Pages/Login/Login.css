@@ -1,6 +1,7 @@
 .login-container{
     background-color: darkblue;
     color: white;
+    width: 35%;
 }
 .btn-login :hover{
 background-color: navy;

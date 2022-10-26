@@ -32,7 +32,7 @@ const handleLogOut=()=>{
 
 
   return (
-    <Navbar bg="light"  expand="lg" sticky="top">
+    <Navbar className="navbar" bg=""  expand="lg" sticky="top">
       <Container>
         <Image
           src={logo}
@@ -80,8 +80,13 @@ const handleLogOut=()=>{
               {/* <NavLink  className="nav-link " to="register">{user?.displayName}</NavLink> */}
               </>
               :
-              <NavLink  className="nav-link " to="login">Login</NavLink>
-            }
+                <>
+                              <NavLink  className="nav-link " to="/login">Login</NavLink>
+                              <NavLink  className="nav-link " to="/register">Register</NavLink>
+                              
+
+                </>
+               }
             
 
           </Nav>

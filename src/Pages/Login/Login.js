@@ -66,17 +66,10 @@ const handleGoogleSignIn=()=>{
 };
 
 
-
-
-
-
-
-
-
-
-
   return (
-    <div className="login-container w-25 mx-auto  container  mt-5 p-5 rounded">
+
+    <div className="login-container mx-auto rounded">
+    <div className=" mx-auto  container  mt-5 p-5 ">
       <Form onSubmit={handleSubmit} >
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -110,6 +103,7 @@ const handleGoogleSignIn=()=>{
 
       New to this Website? Please <Link className="text-light" to={'/register'}>Register</Link>
       </Form.Text>
+    </div>
     </div>
   );
 };

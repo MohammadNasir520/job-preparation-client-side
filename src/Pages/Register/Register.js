@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import "./Register.css"
 
 const Register = () => {
   const [error, setError]=useState([])
@@ -30,8 +32,9 @@ const Register = () => {
 
 
     return (
-        
-        <Form onSubmit={handleSubmit} className="w-50 mx-auto mt-5">
+    
+    <div className='register-container  mx-auto rounded'>
+ <Form onSubmit={handleSubmit} className="  mx-auto  container  mt-5 p-5 ">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Your Name</Form.Label>
           <Form.Control name='name' type="text" placeholder="Your Name" />
@@ -56,11 +59,21 @@ const Register = () => {
        
         
 
-        <Button variant="primary" type="submit" >
+        <Button className='w-100' variant="primary" type="submit" >
           
           Submit
         </Button>
+        <br />
+        <Form.Text className="mx-auto fw-bold text-center">
+
+        Already have an account? Go to  <Link className="text-light " to={'/login'}>Login</Link>
+        </Form.Text>
+
+
       </Form>
+    </div>
+        
+       
     );
 };
 
