@@ -31,6 +31,8 @@ const CoursesDetails = () => {
 
           )}
         </Pdf>
+
+        
         <h2 className="text-center " ref={ref}>
           {" "}
           Details about <span className="text-info">{title}</span> course{" "}

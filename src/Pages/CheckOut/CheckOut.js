@@ -4,11 +4,18 @@ import "./CheckOut.css"
 
 const CheckOut = () => {
     const course=useLoaderData();
-    const {title}=course;
+    const {title , id, price}=course;
     console.log(course)
     return (
         <div className='premium-text-container mt-5 d-flex align-items-center flex-column justify-content-center' >
-            <h3 className='text-center'>Wellcome to Premium <span className='text-info'>{title} </span> course</h3>
+            <h2 className='text-center'>Checkout</h2>
+            <h6 className='text-center'>Buy the Premium course</h6>
+
+            <h4> <span className='text-info'>{title} </span></h4>
+
+            <h5>Course ID: {id}      <span className='ms-5'> payment: {price} TK</span></h5>
+
+
             <p>Start a great Journy with us . Work hard you will definitely be success!</p>
         </div>
     );
