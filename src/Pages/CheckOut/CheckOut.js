@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import "./CheckOut.css"
 
 const CheckOut = () => {
-    const course=useLoaderData();
-    const {title , id, price}=course;
-    console.log(course)
+    const checkout=useLoaderData();
+    const {title , id, price}=checkout;
+
+    useEffect( ()=>{
+        fetch(`https://assignment-10-server-side-ebon.vercel.app/checkout/${id}`)
+    },[])
+    console.log(checkout)
     return (
         <div className='premium-text-container mt-5 d-flex align-items-center flex-column justify-content-center' >
             <h2 className='text-center'>Checkout</h2>

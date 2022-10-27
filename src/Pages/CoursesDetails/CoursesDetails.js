@@ -10,7 +10,7 @@ const CoursesDetails = () => {
   const course = useLoaderData();
   const { title, description, image, exam, price, rating, totalClass, promotion, id } =
     course;
-  console.log(course);
+  console.log(id);
 
   return (
     <div className="container mt-1">
@@ -32,7 +32,7 @@ const CoursesDetails = () => {
           )}
         </Pdf>
 
-        
+
         <h2 className="text-center " ref={ref}>
           {" "}
           Details about <span className="text-info">{title}</span> course{" "}

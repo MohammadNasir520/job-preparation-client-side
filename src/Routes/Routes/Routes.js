@@ -51,7 +51,7 @@ export const router=createBrowserRouter([
             },
             {
                 path:'/checkout/:id',
-                loader: ({params})=> fetch(`https://assignment-10-server-side-ebon.vercel.app/courses/${params.id}`),
+                loader: ({params})=> fetch(`https://assignment-10-server-side-ebon.vercel.app/checkout/${params.id}`),
                 element:<PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             },
             {
