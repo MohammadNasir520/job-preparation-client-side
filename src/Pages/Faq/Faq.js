@@ -5,6 +5,8 @@ import Accordion from "react-bootstrap/Accordion";
 const Faq = () => {
     return (
         <div>
+
+            <h1 className='text-center mt-4'> Frequently asked question about our courses</h1>
              <Accordion className="container mt-5" defaultActiveKey="0">
       <Accordion.Item eventKey="0">
         <Accordion.Header> Who are the instructor for the Guided Course? </Accordion.Header>

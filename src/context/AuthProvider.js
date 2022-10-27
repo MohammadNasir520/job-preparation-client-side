@@ -42,6 +42,8 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, Provider);
   };
 
+
+  // set auth state changed
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
@@ -55,7 +57,6 @@ const AuthProvider = ({ children }) => {
   }, []);
 
 // set user name and photo  function , collecting from register page
-
 const setNameAndPhot=(profile)=>{
   return updateProfile(auth.currentUser, profile)
 }
@@ -71,7 +72,6 @@ const setNameAndPhot=(profile)=>{
 
 
   // set context value
-
   const authInfo = {
     user,
     loading,

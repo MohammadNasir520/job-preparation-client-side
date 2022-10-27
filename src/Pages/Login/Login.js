@@ -88,7 +88,7 @@ const handleGitHubSignIn=()=>{
 }
 
   return (
-
+// form for collecting email , password and for login
     <div className="login-container mx-auto rounded">
     <div className=" mx-auto  container  mt-5 p-5 ">
       <Form onSubmit={handleSubmit} >

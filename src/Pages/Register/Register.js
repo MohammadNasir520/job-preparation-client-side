@@ -10,6 +10,8 @@ const Register = () => {
 const navigate = useNavigate();
     const {createUserByEmailAndPassword ,setNameAndPhot}=useContext(AuthContext);
 
+
+    // ollecting data and creating user by email and password
     const handleSubmit=(event)=>{
         event.preventDefault();
         const form=event.target;
@@ -33,7 +35,7 @@ const navigate = useNavigate();
         
     }
 
-
+// name and photoUrl passing handlar to the function in auth provider
   const handleSetNameAndPhoto=(name, photoURL)=>{
     const profile={
       displayName: name,
@@ -44,11 +46,11 @@ const navigate = useNavigate();
 
 
     return (
-    
+    // register form
     <div className='register-container  mx-auto rounded'>
  <Form onSubmit={handleSubmit} className="  mx-auto  container  mt-5 p-5 ">
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Your Name</Form.Label>
+          <Form.Label>Your FullName</Form.Label>
           <Form.Control name='name' type="text" placeholder="Your Name" />
          
         </Form.Group>

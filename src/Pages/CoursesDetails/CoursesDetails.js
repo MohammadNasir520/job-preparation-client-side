@@ -8,15 +8,17 @@ const ref = React.createRef();
 
 const CoursesDetails = () => {
   const course = useLoaderData();
-  const { title, description, image, exam, rating, totalClass, promotion, id } =
+  const { title, description, image, exam, price, rating, totalClass, promotion, id } =
     course;
   console.log(course);
 
   return (
     <div className="container mt-1">
       
-
+{/* course details header */}
       <header>
+
+        {/* react pdf download functionality */}
       <Pdf targetRef={ref} filename={title}>
           {({ toPdf }) => (
 
@@ -34,11 +36,10 @@ const CoursesDetails = () => {
           Details about <span className="text-info">{title}</span> course{" "}
         </h2>
 
-      
-
-        <p >Course Description: {description}</p>
+      <p className=" text-center fw-bold mt-3" >Course Description: {description}</p>
       </header>
 
+{/* course details card */}
       <section>
         <div className="mt-3">
           <div className="card">
@@ -55,6 +56,7 @@ const CoursesDetails = () => {
                 <h3 className="text-center "> {title}Course Modules </h3>
                 <h4>Total Class: {totalClass} </h4>
                 <h4>Total Quiz: {exam}</h4>
+                <h4>course piece: {price}</h4>
                 <h4>Total Student: {rating.count}</h4>
                 <h4>course Rating: {rating.rate}</h4>
               </div>
