@@ -5,6 +5,7 @@ import CheckOut from "../../Pages/CheckOut/CheckOut";
 import Courses from "../../Pages/Courses/Courses";
 import CoursesDetails from "../../Pages/CoursesDetails/CoursesDetails";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
+import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
@@ -56,6 +57,10 @@ export const router=createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/faq',
+                element: <Faq></Faq>
             }
         ]
     }
