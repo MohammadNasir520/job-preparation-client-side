@@ -4,6 +4,21 @@
 # live-website-link
 https://job-preparation-20980.web.app/
 
+# Feature of this website 
+
+## Carreere guidline to the student
+
+## selling cours to the student 
+
+# corses are 
+
+# math 
+# english
+# bcs preliminary, written , and viva
+# primaray
+
+## this website for motivating student by our course 
+
 
 
 
