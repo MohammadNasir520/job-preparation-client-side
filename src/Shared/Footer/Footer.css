@@ -1,0 +1,22 @@
+.page-footer{
+    background-color: rgb(36, 36, 58);
+    color: white;
+    margin-top: 30px;
+}
+.page-footer a{
+    font-weight:500;
+    text-decoration: none;
+    color: white;
+}
+@media screen and (max-width: 767px) {
+    .page-footer{
+      margin-top:130px;
+     
+    }
+    .page-footer a{
+       font-size: 1rem ;
+    }
+    .services{
+        display: none;
+    }
+}

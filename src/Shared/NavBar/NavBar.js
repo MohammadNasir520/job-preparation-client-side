@@ -45,7 +45,7 @@ const NavBar = () => {
           <Nav className="mx-auto d-flex">
             <NavLink to="/home">Home</NavLink>
             <NavLink to="/courses">Courses</NavLink>
-            <NavLink to="/">FAQ</NavLink>
+            <NavLink to="/faq">FAQ</NavLink>
             <NavLink to="/blogs">Blogs</NavLink>
 
             <div

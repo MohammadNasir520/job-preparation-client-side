@@ -15,7 +15,7 @@ filter: brightness(50%)
         margin: 20px 0;
     }
     .carusel-container img{
-        height: 200px;
+        height: 300px;
     object-fit: cover;
     }
     .carusel-container h3 {

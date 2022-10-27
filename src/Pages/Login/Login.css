@@ -4,9 +4,7 @@
     width: 35%;
     
 }
-.btn-login :hover{
-background-color: navy;
-}
+ 
 @media screen and (max-width: 768px) {
     .login-container{
         width: 100%;

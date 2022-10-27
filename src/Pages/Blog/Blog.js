@@ -1,8 +1,10 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
+import'./blog.css'
 
 const Blog = () => {
   return (
+    <div className="blog">
     <Accordion className="container mt-5" defaultActiveKey="0">
       <Accordion.Item eventKey="0">
         <Accordion.Header> what is cors?</Accordion.Header>
@@ -64,6 +66,7 @@ const Blog = () => {
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
+    </div>
   );
 };
 
