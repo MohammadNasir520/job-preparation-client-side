@@ -6,9 +6,7 @@ const CheckOut = () => {
     const checkout=useLoaderData();
     const {title , id, price}=checkout;
 
-    useEffect( ()=>{
-        fetch(`https://assignment-10-server-side-ebon.vercel.app/checkout/${id}`)
-    },[])
+   
     console.log(checkout)
     return (
         <div className='premium-text-container mt-5 d-flex align-items-center flex-column justify-content-center' >

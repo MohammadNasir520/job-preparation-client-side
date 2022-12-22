@@ -13,20 +13,20 @@ import "./NavBar.css";
 const NavBar = () => {
   const [buttonToggle, setToggle] = useState(false);
 
-  const [buttonText , setButtonText]=useState('Make dark')
+  const [buttonText, setButtonText] = useState('Make dark')
 
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => {
         console.log(error);
       });
   };
 
   const handleToggle = () => {
-    buttonToggle ?<> {setToggle(false) } {setButtonText('Make Dark')}</> : <>{setToggle(true)} {setButtonText("Make Light")}</>;
+    buttonToggle ? <> {setToggle(false)} {setButtonText('Make Dark')}</> : <>{setToggle(true)} {setButtonText("Make Light")}</>;
     console.log(buttonToggle);
   };
 
@@ -48,12 +48,12 @@ const NavBar = () => {
             <NavLink to="/faq">FAQ</NavLink>
             <NavLink to="/blogs">Blogs</NavLink>
 
-            <div
+            {/* <div
               className={` toggle-btn ${buttonToggle ? "dark" : "light"}`}
               onClick={handleToggle}
             >
               {buttonText}
-            </div>
+            </div> */}
             {user?.uid ? (
               <>
                 <NavLink onClick={handleLogOut} to="login">
